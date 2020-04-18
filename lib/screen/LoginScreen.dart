@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generic_login_app/widgets/textFormField/textFormField_login.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -6,15 +7,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       body: Container(
         color: Colors.blueGrey[900],
         alignment: Alignment.center,
@@ -40,29 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      hintText: 'E-mail*',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.black,
-                      ),
-                    ),
-                    validator: (text) {
-                      if (text.isEmpty || !text.contains('@'))
-                        return "E-mail inválido";
-                    },
-                  ),
-                ),
+                InputField(Icons.person, 'Email', false),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: TextFormField(
